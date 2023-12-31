@@ -26,6 +26,11 @@ function Logo() {
 }
 
 function Form() {
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <form className="add-form">
       <h3>What do you need for your trip?</h3>
@@ -34,6 +39,7 @@ function Form() {
           (num =>  <option value={num}>{num}</option>)}
       </select>
       <input type="text" placeholder="Item..." />
+      <button onSubmit={handleSubmit}>ADD</button>
     </form>
   );
 }
