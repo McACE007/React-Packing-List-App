@@ -26,6 +26,8 @@ function Logo() {
 }
 
 function Form() {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(5);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,11 +36,19 @@ function Form() {
   return (
     <form className="add-form">
       <h3>What do you need for your trip?</h3>
-      <select>
+      <select value={quantity} onChange={e => setQuantity(e.target.value * 1)}>
         {Array.from({length: 20}, (_, i) => i + 1).map
-          (num =>  <option value={num}>{num}</option>)}
+          (num =>  
+            <option 
+            value={num}>{num}
+            </option>)}
       </select>
-      <input type="text" placeholder="Item..." />
+      <input 
+        type="text" 
+        placeholder="Item..." 
+        value={description} 
+        onChange={e => setDescription(e.target.value)}
+      />
       <button onSubmit={handleSubmit}>ADD</button>
     </form>
   );
