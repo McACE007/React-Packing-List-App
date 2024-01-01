@@ -13,7 +13,8 @@ function App() {
   }
 
   function handleClearItem() {
-    setItems([]);
+    const confirmed = window.confirm("Are you sure you want to delete all Items?");
+    if (confirmed) setItems([]);
   }
 
   function handleToggleItemPacked(id) {
