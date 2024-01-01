@@ -36,7 +36,7 @@ function Form({onAddItem}) {
     if(!description) return;
    
     onAddItem({
-      id: Data.now(),
+      id: Date.now(),
       quantity: quantity,
       description: description,
       packed: false
