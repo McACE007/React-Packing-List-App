@@ -12,6 +12,10 @@ function App() {
     setItems((items) => items.filter(item => item.id !== id));
   }
 
+  function handleClearItem() {
+    setItems([]);
+  }
+
   function handleToggleItemPacked(id) {
     setItems(items =>
       items.map(item =>
@@ -25,7 +29,7 @@ function App() {
       <div className="app">
         <Logo />
         <Form onAddItem={handleAddItem} />
-        <PackingList items={items} onRemoveItem={handleRemoveItem} onToggleItemPacked={handleToggleItemPacked} />
+        <PackingList items={items} onRemoveItem={handleRemoveItem} onToggleItemPacked={handleToggleItemPacked} onClearItem={handleClearItem} />
         <Stats items={items} />
       </div>
     </>
@@ -79,7 +83,7 @@ function Form({ onAddItem }) {
   );
 }
 
-function PackingList({ items, onRemoveItem, onToggleItemPacked }) {
+function PackingList({ items, onRemoveItem, onToggleItemPacked, onClearItem }) {
   const [sortBy, setSortBy] = useState('input');
 
   let sortedItems;
@@ -115,6 +119,7 @@ function PackingList({ items, onRemoveItem, onToggleItemPacked }) {
           <option value="description">Sort By Description</option>
           <option value="packed">Sort By Packed Status</option>
         </select>
+        <button onClick={onClearItem}>Clear List</button>
       </div>
     </div>
   );
