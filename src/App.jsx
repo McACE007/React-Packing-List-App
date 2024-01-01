@@ -8,12 +8,16 @@ function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handleRemoveItem(id) {
+    setItems((items) => items.filter(item => item.id !== id));
+  }
+
   return (
     <>
       <div className="app">
         <Logo />
-        <Form onAddItem={handleAddItem}/>
-        <PackingList items={items}/>
+        <Form onAddItem={handleAddItem} />
+        <PackingList items={items} onRemoveItem={handleRemoveItem} />
         <Stats />
       </div>
     </>
@@ -21,20 +25,20 @@ function App() {
 }
 
 function Logo() {
- return (
-  <h1>🌴 Far Away 🎒</h1>
- ); 
+  return (
+    <h1>🌴 Far Away 🎒</h1>
+  );
 }
 
-function Form({onAddItem}) {
+function Form({ onAddItem }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if(!description) return;
-   
+    if (!description) return;
+
     onAddItem({
       id: Date.now(),
       quantity: quantity,
@@ -50,16 +54,16 @@ function Form({onAddItem}) {
     <form className="add-form">
       <h3>What do you need for your trip?</h3>
       <select value={quantity} onChange={e => setQuantity(e.target.value * 1)}>
-        {Array.from({length: 20}, (_, i) => i + 1).map
-          (num =>  
-            <option 
-            value={num}>{num}
+        {Array.from({ length: 20 }, (_, i) => i + 1).map
+          (num =>
+            <option
+              value={num}>{num}
             </option>)}
       </select>
-      <input 
-        type="text" 
-        placeholder="Item..." 
-        value={description} 
+      <input
+        type="text"
+        placeholder="Item..."
+        value={description}
         onChange={e => setDescription(e.target.value)}
       />
       <button onClick={handleSubmit}>ADD</button>
@@ -67,14 +71,14 @@ function Form({onAddItem}) {
   );
 }
 
-function PackingList({items}) {
- return (
+function PackingList({ items, onRemoveItem }) {
+  return (
     <div className="list">
       <ul>
-        {items.map(item => <Item item={item} key={item.id} />)}
+        {items.map(item => <Item item={item} key={item.id} onRemoveItem={onRemoveItem} />)}
       </ul>
     </div>
- ); 
+  );
 }
 
 function Stats() {
@@ -85,13 +89,13 @@ function Stats() {
   );
 }
 
-function Item({item}) {
+function Item({ item, onRemoveItem }) {
   return (
     <li>
-      <span style={item.packed ? {textDecoration: "line-through"} : {}}>
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onRemoveItem(item.id)}>❌</button>
     </li>
   );
 }
