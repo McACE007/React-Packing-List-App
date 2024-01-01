@@ -40,7 +40,7 @@ React Packing List App is a responsive and user-friendly web application that al
 
     npm run build
 
-To begin exploring the React Packing List App, simply visit the  [live demo]()  and navigate through the user-friendly app. The app is also compatible with various modern web browsers, including Google Chrome, Firefox, Safari, and Microsoft Edge.
+To begin exploring the React Packing List App, simply visit the  [live demo](https://react-packing-list-app.vercel.app/)  and navigate through the user-friendly app. The app is also compatible with various modern web browsers, including Google Chrome, Firefox, Safari, and Microsoft Edge.
 
 # 📸 Screenshots
 
