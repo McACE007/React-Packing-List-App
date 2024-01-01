@@ -1,7 +1,7 @@
  # Project Title: React Packing List App
 
 # Description: 
-React Packing List App is a responsive and user-friendly web application that allows users to create, edit, and delete a list of items for their upcoming trip. It offers a sleek and modern design with various features, including a responsive interface, item categorization, sorting, and a clear option for an easy start. The application utilizes React.js and Bootstrap for the frontend and Node.js with Express for the backend.
+React Packing List App is a responsive and user-friendly web application that allows users to create, edit, and delete a list of items for their upcoming trip. It offers a sleek and modern design with various features, including a responsive interface, item categorization, sorting, and a clear option for an easy start. The application utilizes React.js and Bootstrap for the frontend.
 
 
 # Key Features
